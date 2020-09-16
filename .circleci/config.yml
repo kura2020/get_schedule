@@ -1,0 +1,77 @@
+version: 2.1
+jobs:
+  build:
+    docker: 
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      - run: mkdir ./test-reports
+      - run: npm install typescript@3.2.4
+
+#      - sonarcloud/scan
+#      - run:
+#          command: |
+#            STATUS=$(curl -u "${SONAR_TOKEN}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=mcsyap_get_schedule&branch=${CIRCLE_BRANCH}" | jq -r '.projectStatus.status')
+#            echo "Status of SonarQube task is ${STATUS} "
+#            if [ "${STATUS}" != "OK" ]; then
+#                echo "Quality gate is not OK - exiting with error"
+#                exit 1
+#            fi
+#      - run:
+#          command: ./node_modules/tslint/bin/tslint -v
+      # Download and cache dependencies
+      - run:
+          command: npm install
+          working_directory: ./get_schedule
+      #- run: npm version
+      - run: sudo npm link gulp
+      #- run: gulp -version
+      # run gulp
+      # - run: mkdir /tmp/artifacts
+      - run: 
+          command: gulp bundle --ship
+          working_directory: ./get_schedule
+      - run: 
+          command: gulp package-solution --ship
+          working_directory: ./get_schedule
+      - store_artifacts:
+          path: ./sharepoint/solution/get-schedule.sppkg
+     
+      # 日本語フォントのインストール
+      - run:
+          name: Install Japanese font
+          command: |
+            sudo apt-get install fonts-migmix
+      # Selenuim-side runnerの実行
+      - run: 
+          command: npm install selenium-side-runner
+          working_directory: ./get_schedule
+#      - run:
+#          command: sudo npm link selenium-side-runner
+#          working_directory: ./get_schedule
+#          command: |
+#            npm install selenium-side-runner
+#            sudo npm link selenium-side-runner
+#      - run: 
+#          command: |
+#            selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars,headless]"  ./side/test1-siderunner.side --output-directory=./test-reports --output-format=junit
+      # Selenuim-Webdriverの実行
+#      - run: npm install selenium-webdriver
+#      - run: npm install mocha
+#      - run: npm install mocha-junit-reporter
+#      - run: 
+#          command: |
+#            ./node_modules/.bin/mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=./test-reports/test1-webdriver.xml
+      # テスト結果の保存
+      - store_test_results:
+          path: ./test-reports
+      - store_artifacts:
+          path: ./screenshot1.jpg
+      
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
+workflows:
+  main:
+    jobs:
+      - build:
+          context: SonarCloud
