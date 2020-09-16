@@ -32,7 +32,7 @@ jobs:
           command: |
             pwd
             gulp bundle --ship
-          working_directory: ./project/helloworld-webpart
+          working_directory: ./helloworld-webpart
       - run: 
           command: |
             pwd
