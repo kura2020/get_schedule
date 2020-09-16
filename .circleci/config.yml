@@ -29,10 +29,14 @@ jobs:
       # run gulp
       # - run: mkdir /tmp/artifacts
       - run: 
-          command: gulp bundle --ship
+          command: |
+            pwd
+            gulp bundle --ship
           working_directory: ./get_schedule
       - run: 
-          command: gulp package-solution --ship
+          command: |
+            pwd
+            gulp package-solution --ship
           working_directory: ./get_schedule
       - store_artifacts:
           path: ./sharepoint/solution/get-schedule.sppkg
@@ -44,7 +48,9 @@ jobs:
             sudo apt-get install fonts-migmix
       # Selenuim-side runnerÇÃé¿çs
       - run: 
-          command: npm install selenium-side-runner
+          command: |
+            pwd
+            npm install selenium-side-runner
           working_directory: ./get_schedule
 #      - run:
 #          command: sudo npm link selenium-side-runner
