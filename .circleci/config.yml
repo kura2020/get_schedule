@@ -22,7 +22,7 @@ jobs:
       # Download and cache dependencies
       - run:
           command: npm install
-          working_directory: ./get_schedule
+          working_directory: ./helloworld-webpart
       #- run: npm version
       - run: sudo npm link gulp
       #- run: gulp -version
@@ -32,14 +32,14 @@ jobs:
           command: |
             pwd
             gulp bundle --ship
-          working_directory: ~/get_schedule
+          working_directory: ./project/helloworld-webpart
       - run: 
           command: |
             pwd
             gulp package-solution --ship
-          working_directory: ./get_schedule
+          working_directory: ./helloworld-webpart
       - store_artifacts:
-          path: ./sharepoint/solution/get-schedule.sppkg
+          path: ./sharepoint/solution/helloworld-webpart.sppkg
      
       # 日本語フォントのインストール
       - run:
@@ -51,10 +51,10 @@ jobs:
           command: |
             pwd
             npm install selenium-side-runner
-          working_directory: ./get_schedule
+          working_directory: ./helloworld-webpart
 #      - run:
 #          command: sudo npm link selenium-side-runner
-#          working_directory: ./get_schedule
+#          working_directory: ./helloworld-webpart
 #          command: |
 #            npm install selenium-side-runner
 #            sudo npm link selenium-side-runner
