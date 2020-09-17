@@ -13,7 +13,7 @@ jobs:
       - run: 
           command: |
             pwd
-            echo 'ls -lt /home/circleci/project'
+            echo 'ls -l /home/circleci/project'
             ls -l /home/circleci/project
             npm install typescript@3.2.4
             pwd                         
@@ -34,11 +34,9 @@ jobs:
       - run:
           command: |
             pwd
-            echo 'ls -lt /home/circleci/project'
-            ls -l /home/circleci/project
-            echo 'ls -lt /home/circleci/project/node_modules'
-            ls -lt /home/circleci/project/node_modules
-            echo 'ls -lt /usr/local/lib/node_modules'
+            echo 'ls -l /home/circleci/project/node_modules'
+            ls -l /home/circleci/project/node_modules
+            echo 'ls -l /usr/local/lib/node_modules'
             ls -l /usr/local/lib/node_modules
             npm install
             pwd
@@ -75,11 +73,10 @@ jobs:
             pwd
             npm config get prefix
 
-            echo 'ls -lt /home/circleci/project'
-            ls -l /home/circleci/project
-            echo 'ls -lt /home/circleci/project/node_modules'
-            ls -lt /home/circleci/project/node_modules
-            echo 'ls -lt /usr/local/lib/node_modules'
+            echo 'ls -l /home/circleci/project/node_modules'
+            ls -l /home/circleci/project/node_modules
+
+            echo 'ls -l /usr/local/lib/node_modules'
             ls -l /usr/local/lib/node_modules
 
             npm install selenium-side-runner
