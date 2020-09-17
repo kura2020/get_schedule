@@ -59,21 +59,21 @@ jobs:
       # run gulp
       # - run: mkdir /tmp/artifacts
 
-#      - run: 
-#          command: |
-#            pwd
-#            gulp bundle --ship
-#            pwd
-#          working_directory: ./get_schedule
-#      - run: 
-#          command: |
-#            pwd
-#            gulp package-solution --ship
-#            pwd
-#          working_directory: ./get_schedule
+      - run: 
+          command: |
+            pwd
+            gulp bundle --ship
+            pwd
+          working_directory: ./get_schedule
+      - run: 
+          command: |
+            pwd
+            gulp package-solution --ship
+            pwd
+          working_directory: ./get_schedule
 
-#      - store_artifacts:
-#          path: ./sharepoint/solution/get-schedule.sppkg
+      - store_artifacts:
+          path: ./sharepoint/solution/get-schedule.sppkg
      
 
 
