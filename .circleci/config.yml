@@ -25,7 +25,10 @@ jobs:
 
       # Download and cache dependencies
       - run:
-          command: npm install
+          command: |
+            pwd
+            npm install
+            pwd
           working_directory: ./get_schedule
       #- run: npm version
 
@@ -36,10 +39,16 @@ jobs:
       # - run: mkdir /tmp/artifacts
 
       - run: 
-          command: gulp bundle --ship
+          command: |
+            pwd
+            gulp bundle --ship
+            pwd
           working_directory: ./get_schedule
       - run: 
-          command: gulp package-solution --ship
+          command: |
+            pwd
+            gulp package-solution --ship
+            pwd
           working_directory: ./get_schedule
 
       - store_artifacts:
@@ -53,6 +62,8 @@ jobs:
             pwd
             npm install selenium-side-runner
             sudo npm link selenium-side-runner
+          working_directory: ./test_schedule
+
       #- run: 
       #    command: |
       #      selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars,headless]"  ./side/test1-siderunner.side --output-directory=./test-reports --output-format=junit
