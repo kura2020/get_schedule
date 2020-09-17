@@ -52,8 +52,8 @@ jobs:
             pwd
             echo 'ls -l /home/circleci/project/node_modules'
             ls -l /home/circleci/project/node_modules
-            sudo npm link gulp
-          working_directory: ./get_schedule
+#            sudo npm link gulp
+#          working_directory: ./get_schedule
 
       #- run: gulp -version
 
@@ -65,13 +65,15 @@ jobs:
             pwd
             gulp bundle --ship
             pwd
-          working_directory: ./get_schedule
+
+          #working_directory: ./get_schedule
+          working_directory: ./node_modules
       - run: 
           command: |
             pwd
             gulp package-solution --ship
             pwd
-          working_directory: ./get_schedule
+          #working_directory: ./get_schedule
 
       - store_artifacts:
           path: ./sharepoint/solution/get-schedule.sppkg
