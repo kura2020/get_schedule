@@ -20,8 +20,8 @@ jobs:
  #               echo "Quality gate is not OK - exiting with error"
  #               exit 1
  #           fi
-      - run:
-          command: ./node_modules/tslint/bin/tslint -v
+ #     - run:
+ #         command: ./node_modules/tslint/bin/tslint -v
 
       # Download and cache dependencies
       - run:
