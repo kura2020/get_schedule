@@ -34,8 +34,12 @@ jobs:
       - run:
           command: |
             pwd
+            echo 'ls -l /home/circleci/project/get_schedule/node_modules'
+            ls -l /home/circleci/project/get_schedule/node_modules
+
             echo 'ls -l /home/circleci/project/node_modules'
             ls -l /home/circleci/project/node_modules
+
             echo 'ls -l /usr/local/lib/node_modules'
             ls -l /usr/local/lib/node_modules
             npm install
