@@ -5,62 +5,101 @@ jobs:
       - image: circleci/node:10-browsers
     steps:
       - checkout
-      - run: mkdir ./test-reports
-      - run: npm install typescript@3.2.4
 
-#      - sonarcloud/scan
-#      - run:
-#          command: |
-#            STATUS=$(curl -u "${SONAR_TOKEN}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=mcsyap_get_schedule&branch=${CIRCLE_BRANCH}" | jq -r '.projectStatus.status')
-#            echo "Status of SonarQube task is ${STATUS} "
-#            if [ "${STATUS}" != "OK" ]; then
-#                echo "Quality gate is not OK - exiting with error"
-#                exit 1
-#            fi
-#      - run:
-#          command: ./node_modules/tslint/bin/tslint -v
+      - run: mkdir ./test-reports
+
+
+
+      - run: npm install typescript@3.2.4
+ #     - sonarcloud/scan
+ #     - run:
+ #         command: |
+ #           STATUS=$(curl -u "${SONAR_TOKEN}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=mcsyap_get_schedule&branch=${CIRCLE_BRANCH}" | jq -r '.projectStatus.status')
+ #           echo "Status of SonarQube task is ${STATUS} "
+ #           if [ "${STATUS}" != "OK" ]; then
+ #               echo "Quality gate is not OK - exiting with error"
+ #               exit 1
+ #           fi
+      - run:
+          command: ./node_modules/tslint/bin/tslint -v
+
       # Download and cache dependencies
       - run:
           command: npm install
-          working_directory: ./helloworld-webpart
+          working_directory: ./get_schedule
       #- run: npm version
+
       - run: sudo npm link gulp
       #- run: gulp -version
+
       # run gulp
       # - run: mkdir /tmp/artifacts
+
       - run: 
-          command: |
-            pwd
-            gulp bundle --ship
-          working_directory: ./helloworld-webpart
+          command: gulp bundle --ship
+          working_directory: ./get_schedule
       - run: 
-          command: |
-            pwd
-            gulp package-solution --ship
-          working_directory: ./helloworld-webpart
+          command: gulp package-solution --ship
+          working_directory: ./get_schedule
+
       - store_artifacts:
-          path: ./sharepoint/solution/helloworld-webpart.sppkg
+          path: ./sharepoint/solution/get-schedule.sppkg
      
+
+
+      # Selenuim-side runnerの実行
+      #- run: 
+      #    command: |
+      #      npm install selenium-side-runner
+      #      sudo npm link selenium-side-runner
+      #- run: 
+      #    command: |
+      #      selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars,headless]"  ./side/test1-siderunner.side --output-directory=./test-reports --output-format=junit
+
+      # Selenuim-Webdriverの実行
+      #- run: npm install selenium-webdriver
+      #- run: npm install mocha
+      #- run: npm install mocha-junit-reporter
+      #- run: 
+      #    command: |
+      #      ./node_modules/.bin/mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=./test-reports/test1-webdriver.xml
+      # テスト結果の保存
+      #- store_test_results:
+      #    path: ./test-reports
+      #- store_artifacts:
+      #    path: ./screenshot1.jpg
+
+
+      # ここから Sharepointにデプロイ
+      # o365 コマンドツールのインストール
+#      - run:
+#          command: npm install @pnp/office365-cli
+#          working_directory: ./get_schedule
+#      
+#      - run: sudo npm link @pnp/office365-cli
+      
+      # ログイン・デプロイを実行
+#      - run:
+#          command: o365 login -t password -u $USERNAME -p $PASSWORD
+#      
+#      - run:
+#          command: o365 spo app add -p ./get_schedule/sharepoint/solution/get-schedule.sppkg --overwrite
+#      - run:
+#          command: o365 spo app deploy --name get-schedule.sppkg
+
+  test:
+    docker: # Executor タイプです。他に machine、macOS という実行タイプを指定できます
+      - image: circleci/node:10-browsers # プライマリコンテナです。このなかでジョブコマンドが実行されます      
+    steps:
+      - checkout
+
       # 日本語フォントのインストール
       - run:
           name: Install Japanese font
           command: |
             sudo apt-get install fonts-migmix
-      # Selenuim-side runnerの実行
-      - run: 
-          command: |
-            pwd
-            npm install selenium-side-runner
-          working_directory: ./helloworld-webpart
-#      - run:
-#          command: sudo npm link selenium-side-runner
-#          working_directory: ./helloworld-webpart
-#          command: |
-#            npm install selenium-side-runner
-#            sudo npm link selenium-side-runner
-#      - run: 
-#          command: |
-#            selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars,headless]"  ./side/test1-siderunner.side --output-directory=./test-reports --output-format=junit
+      - run: mkdir ./test-reports
+
       # Selenuim-Webdriverの実行
 #      - run: npm install selenium-webdriver
 #      - run: npm install mocha
@@ -68,16 +107,32 @@ jobs:
 #      - run: 
 #          command: |
 #            ./node_modules/.bin/mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=./test-reports/test1-webdriver.xml
+      
+      # Selenuim-side runnerの実行
+      #- run: 
+      #    command: |
+      #      npm install selenium-side-runner
+      #      sudo npm link selenium-side-runner
+      #    working_directory: ./get_schedule-webpart
+      #- run: 
+      #    command: |
+      #      selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars,headless]"  ./side/test1-siderunner.side --output-directory=./test-reports --output-format=junit
       # テスト結果の保存
       - store_test_results:
           path: ./test-reports
       - store_artifacts:
           path: ./screenshot1.jpg
-      
-#orbs:
-#  sonarcloud: sonarsource/sonarcloud@1.0.1
-#workflows:
-#  main:
-#    jobs:
-#      - build:
-#          context: SonarCloud
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
+workflows:
+  main:
+    jobs:
+      - build:
+          context: SonarCloud
+          filters:
+            branches:
+              only: developer
+      - test:
+          requires:
+            - build
