@@ -2,17 +2,29 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
   "version": "2.0",
   "bundles": {
-    "hello-world-web-part": {
+    "get-schedule-web-part": {
       "components": [
         {
-          "entrypoint": "./lib/webparts/helloWorld/HelloWorldWebPart.js",
-          "manifest": "./src/webparts/helloWorld/HelloWorldWebPart.manifest.json"
+          "entrypoint": "./lib/webparts/getSchedule/GetScheduleWebPart.js",
+          "manifest": "./src/webparts/getSchedule/GetScheduleWebPart.manifest.json",
+          "moment": "./lib/webparts/getSchedule/moment.min.js"
         }
       ]
     }
   },
-  "externals": {},
+  
+
+  "externals": {    
+    "jquery": "https://code.jquery.com/jquery-3.4.1.min.js"//,
+
+  
+
+},
+
+
+
   "localizedResources": {
-    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js"
+    "GetScheduleWebPartStrings": "lib/webparts/getSchedule/loc/{locale}.js"   
+    
   }
 }

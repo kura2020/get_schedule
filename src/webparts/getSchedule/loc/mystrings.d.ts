@@ -1,10 +1,10 @@
-declare interface IHelloWorldWebPartStrings {
+declare interface IGetScheduleWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
 }
 
-declare module 'HelloWorldWebPartStrings' {
-  const strings: IHelloWorldWebPartStrings;
+declare module 'GetScheduleWebPartStrings' {
+  const strings: IGetScheduleWebPartStrings;
   export = strings;
 }

@@ -50,7 +50,7 @@ export default class GetScheduleWebPart extends BaseClientSideWebPart<IGetSchedu
   private isLisenced = false;
   public render(): void {
     
-    // ƒJƒŒƒ“ƒ_[ƒ{ƒ^ƒ“•\¦E”ñ•\¦
+    // ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ãƒœã‚¿ãƒ³è¡¨ç¤ºãƒ»éè¡¨ç¤º
     var CalendID ="mycal-" + this.randomID;//this.instanceId;//
   
     //var chk_color ="chk_color" +randomID;
@@ -61,7 +61,7 @@ export default class GetScheduleWebPart extends BaseClientSideWebPart<IGetSchedu
     </div>`;
   //
 
-  console.log("ƒo[ƒWƒ‡ƒ“F1.2.1.5");
+  console.log("ãƒãƒ¼ã‚¸ãƒ§ãƒ³ï¼š1.2.1.5");
   //2020/07/30 webpartID
   this.ColorSet(this.randomID,CalendID);
   //this.ColorSet(this.instanceId,CalendID);
@@ -86,8 +86,8 @@ protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     allEventsUrl=PropertyPaneDropdown('MySchedule', {
       label: '',        
       options:  [
-        { key: '1', text: 'æ“¾‚·‚é' },
-        { key: '0', text: 'æ“¾‚µ‚È‚¢' }
+        { key: '1', text: 'å–å¾—ã™ã‚‹' },
+        { key: '0', text: 'å–å¾—ã—ãªã„' }
       ]
     });
   }
@@ -104,28 +104,28 @@ protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
             groupName: "",//strings.BasicGroupName,
             groupFields: [
               PropertyPaneTextField('CalendarUrl', {
-                label: 'ƒJƒŒƒ“ƒ_[ƒŠƒXƒg–¼',
+                label: 'ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ãƒªã‚¹ãƒˆå',
                 //onGetErrorMessage: this.validateListName.bind(this),
                 deferredValidationTime: 500
 
               }),
               PropertyPaneTextField('CategoryUrl', {
-                label: 'ƒJƒeƒSƒŠ[ƒŠƒXƒg–¼',
+                label: 'ã‚«ãƒ†ã‚´ãƒªãƒ¼ãƒªã‚¹ãƒˆå',
                 //onGetErrorMessage: this.validateListName.bind(this),
                 deferredValidationTime: 500
 
               }),
   
               PropertyPaneDropdown('head_disp', {
-                label: 'ƒJƒŒƒ“ƒ_[ƒwƒbƒ_[',
+                label: 'ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ãƒ˜ãƒƒãƒ€ãƒ¼',
                 options:  [
-                  { key: '1', text: '•\¦' },
-                  { key: '0', text: '”ñ•\¦' }
+                  { key: '1', text: 'è¡¨ç¤º' },
+                  { key: '0', text: 'éè¡¨ç¤º' }
                 ]
               }),
                
               PropertyPaneTextField('MyPass', {
-                label: 'ƒƒOƒCƒ“ƒ†[ƒU[‚ÌƒXƒPƒWƒ…[ƒ‹‚ğ•\¦',
+                label: 'ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¡¨ç¤º',
                 deferredValidationTime: 500
                 
               }),
@@ -134,7 +134,7 @@ protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
                 
               }),
               PropertyPaneButton('', { 
-                text: "“o˜^",                   
+                text: "ç™»éŒ²",                   
                 onClick: this.cobWPPropButtonClick.bind(this)
                   }), 
              
@@ -146,12 +146,12 @@ protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     ]
   };
 }
-  //ƒƒOƒCƒ“ƒ†[ƒU[PASSŒŸØ
+  //ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ãƒ¼PASSæ¤œè¨¼
   private cobWPPropButtonClick(oldvalue: any):any{
 
     if(this.properties.MyPass !="P@ssw0rd"){
       this.isLisenced = false;
-      alert("ƒpƒXƒ[ƒh‚ªŠÔˆá‚¢‚Å‚·B");
+      alert("ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé–“é•ã„ã§ã™ã€‚");
       this.context.propertyPane.refresh();
     }else{
       this.isLisenced = true;
@@ -160,7 +160,7 @@ protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     
    
   }
-// ”ñ”½‰«‚ÌƒvƒƒpƒeƒB ƒEƒBƒ“ƒhƒE
+// éåå¿œæ€§ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 protected get disableReactivePropertyChanges(): boolean { 
   return true; 
 }
@@ -169,7 +169,7 @@ private _setButtonEventHandlers(): void {
   
     
 }
-   //ƒJƒŒƒ“ƒ_[
+   //ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼
    private graphRenderList(CalendID,strMySchedule){
 
 
@@ -222,25 +222,25 @@ private _setButtonEventHandlers(): void {
           }
          //swal2.fire( info.event.title,eventDetail ); 
          var shtml='<div style="border-bottom:1px solid #e9ecef;text-align:left;height:36px;vertical-align:middle">'+
-         '<div  style="float : left"><font style="font-weight:800">—\’èÚ×</font></div>'+
-         '<div  style="float : right"><button class="swal2-outlook swal2-styled" style="margin:0;border-radius:0.25em;color:#fff;border:0;font-size:1.05em; background-color:#3085d6;display:none">OutLook“o˜^</button></div>' +
+         '<div  style="float : left"><font style="font-weight:800">äºˆå®šè©³ç´°</font></div>'+
+         '<div  style="float : right"><button class="swal2-outlook swal2-styled" style="margin:0;border-radius:0.25em;color:#fff;border:0;font-size:1.05em; background-color:#3085d6;display:none">OutLookç™»éŒ²</button></div>' +
          '</div>'+
          '<div style="height:6px;"></div>'+
           
-        '<table style="width:100%;font-size:.9em"><tr><th align="left" style="font-weight:600;width:25%">ƒ^ƒCƒgƒ‹ </th>'+
+        '<table style="width:100%;font-size:.9em"><tr><th align="left" style="font-weight:600;width:25%">ã‚¿ã‚¤ãƒˆãƒ« </th>'+
         '<td align="left" colspan="2">'+info.event.title+'</td></tr>'+
-        '<tr><th align="left" style="font-weight:600">ŠJn</th><td align="left">'+eventStart+'</td><td><input type="checkbox"'+chk_callDay+' disabled>I“ú</td></tr>'+
-        '<tr><th align="left" style="font-weight:600">I—¹</th><td align="left">'+eventEnd+'</td><td></td></tr>'+
-        '<tr><th align="left" style="font-weight:600">ƒJƒeƒSƒŠ[</th><td align="left"  colspan="2">'+category+'</td></tr>'+
-        '<tr><th align="left" style="font-weight:600">à–¾</th><td align="left"  colspan="2"><div style ="overflow-y:auto;height:100px;width:365px">'+memo+'</div></td></tr>'+
+        '<tr><th align="left" style="font-weight:600">é–‹å§‹æ™‚åˆ»</th><td align="left">'+eventStart+'</td><td><input type="checkbox"'+chk_callDay+' disabled>çµ‚æ—¥</td></tr>'+
+        '<tr><th align="left" style="font-weight:600">çµ‚äº†æ™‚åˆ»</th><td align="left">'+eventEnd+'</td><td></td></tr>'+
+        '<tr><th align="left" style="font-weight:600">ã‚«ãƒ†ã‚´ãƒªãƒ¼</th><td align="left"  colspan="2">'+category+'</td></tr>'+
+        '<tr><th align="left" style="font-weight:600">èª¬æ˜</th><td align="left"  colspan="2"><div style ="overflow-y:auto;height:100px;width:365px">'+memo+'</div></td></tr>'+
         ' </table>' ; 
          
          swal2.fire({
            html:shtml
          } );
-         //OK ƒ{ƒ^ƒ“ƒTƒCƒY’²®
+         //OK ãƒœã‚¿ãƒ³ã‚µã‚¤ã‚ºèª¿æ•´
          $('.swal2-styled').css('padding','.25em 1em');
-         //”wŒi‰æ–Ê“§–¾
+         //èƒŒæ™¯ç”»é¢é€æ˜
          $('.ms-font-m').removeClass('swal2-shown');
          $('.ms-font-m').removeClass('swal2-height-auto');
          //JSON
@@ -265,9 +265,9 @@ private _setButtonEventHandlers(): void {
 
         var ms =this.context.msGraphClientFactory;
           
-          //ƒJƒŒƒ“ƒ_[‚Ì“à—e‚ğOutLook‚É“o˜^‚·‚é
+          //ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã®å†…å®¹ã‚’OutLookã«ç™»éŒ²ã™ã‚‹
          $(".swal2-outlook").on('click', function(){
-            // ’ÊMÀs
+            // é€šä¿¡å®Ÿè¡Œ
            //var ms =new  MSGraphClientFactory;
            ms.getClient()
            .then((client:MSGraphClient): void => {
@@ -282,7 +282,7 @@ private _setButtonEventHandlers(): void {
               {
                 console.log("success");
               }
-              alert('ŠY“–ƒf[ƒ^‚ğOutLook‚É“o˜^‚µ‚Ü‚µ‚½B');
+              alert('è©²å½“ãƒ‡ãƒ¼ã‚¿ã‚’OutLookã«ç™»éŒ²ã—ã¾ã—ãŸã€‚');
             })//closes
            });
                
@@ -290,7 +290,7 @@ private _setButtonEventHandlers(): void {
           
         });
 
-         //ƒAƒ‰[ƒ€‚ÌƒŠƒ“ƒNˆ—ƒAƒ‰[ƒ€‚ÌƒŠƒ“ƒNˆ—
+         //ã‚¢ãƒ©ãƒ¼ãƒ ã®ãƒªãƒ³ã‚¯å‡¦ç†ã‚¢ãƒ©ãƒ¼ãƒ ã®ãƒªãƒ³ã‚¯å‡¦ç†
          $(".swal2-content a").on('click',function(){
            var url =$(this).attr("href");
            window.open(url,"_blank");
@@ -375,7 +375,7 @@ private _setButtonEventHandlers(): void {
                      }); 
    
                }else{
-                 console.log("ExchangeŒÂlƒXƒPƒWƒ…[ƒ‹‚Ìæ“¾‚É¸”s‚µ‚Ü‚µ‚½B");
+                 console.log("Exchangeå€‹äººã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
                }
        //----------OUT LOOK---------
                  data.value.forEach(function(task,key){
@@ -395,7 +395,7 @@ private _setButtonEventHandlers(): void {
                      var end ;// =moment.utc(task.MyCalEventDateTo).add("9","hours") ;
                      var title =task.Title;
                      var allDay=true;
-                     var memo =task.Memo;//ƒJƒŒƒ“ƒ_[‚Ìà–¾@2020/07/27
+                     var memo =task.Memo;//ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã®èª¬æ˜ã€€2020/07/27
                     // memo=memo.toString();
                      if(!task.AllDay) // time
                      {
@@ -435,7 +435,7 @@ private _setButtonEventHandlers(): void {
                });
              });
             }
-            // MySchdule ”ñ•\¦(outlook)
+            // MySchdule éè¡¨ç¤º(outlook)
             if (strMySchedule!="1" )//|| !this.isLisenced)
             {
              
@@ -455,7 +455,7 @@ private _setButtonEventHandlers(): void {
                  var end ;// =moment.utc(task.MyCalEventDateTo).add("9","hours") ;
                  var title =task.Title;
                  var allDay=true;
-                 var memo =task.Memo;//ƒJƒŒƒ“ƒ_[‚Ìà–¾@2020/07/27
+                 var memo =task.Memo;//ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã®èª¬æ˜ã€€2020/07/27
                 // memo=memo.toString();
                  if(!task.AllDay) // time
                  {
@@ -498,7 +498,7 @@ private _setButtonEventHandlers(): void {
      for(let j:number = 0;j<Elements.length;j++){
        Elements[j].addEventListener('click',function(event){
          var checkIdclass = this.id.substring(6,this.id.length-6);
-         if(this.id.indexOf("mycal-Outlook")==0){//Myƒ{ƒ^ƒ“
+         if(this.id.indexOf("mycal-Outlook")==0){//Myãƒœã‚¿ãƒ³
            console.log($(this).attr("data-value"));
            //var myRodomID=this.className.substring(0,this.className.indexOf("RodomID")).trim();
            var myRodomID=this.id.substring(this.id.length-6,this.id.length).trim();
@@ -509,7 +509,7 @@ private _setButtonEventHandlers(): void {
            webPartID +="outlook";
            
 
-           if (checked=="0") {//My schedule”ñ•\¦¨•\¦
+           if (checked=="0") {//My scheduleéè¡¨ç¤ºâ†’è¡¨ç¤º
              $(this).attr("data-value","1");
               //2020/08/05 webpart
              localStorage.setItem(webPartID, "1");
@@ -533,7 +533,7 @@ private _setButtonEventHandlers(): void {
              $('.'+myRodomID +' .'+checkIdclass).addClass(styles.eventnone);
              $('.'+myRodomID +' .'+checkIdclass).removeClass(styles.eventblock);
            } 
-         }else{//ƒ`ƒFƒbƒNƒ{ƒbƒNƒX
+         }else{//ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹
           //2020/08/05 localStorage
          // var webPartID=$("#"+this.id).attr("webpartid");          
           var webPartID=$(this).attr("webpartid");
@@ -600,7 +600,7 @@ private _setButtonEventHandlers(): void {
            }
            var BcheckAll = true;
            if(this.checked){ 
-             //check all ”»’f   
+             //check all åˆ¤æ–­   
              //2020/07/30
              var thisclassName =this.id.substring(this.id.length-6);             
              $.each($('input[type="checkbox"][name="disChk"][id!="checkAll"][class="'+thisclassName+'"]'),function(index,elem){
@@ -627,7 +627,7 @@ private _setButtonEventHandlers(): void {
              }
            }
            else{
-             //check all ”»’f  
+             //check all åˆ¤æ–­  
              //2020/07/30
              var thisclassName =this.id.substring(this.id.length-6);
              
@@ -682,7 +682,7 @@ private ColorSet(randomID,CalendID){
 
  }
   let checkAllhtml='<input type="checkbox" ' + checkAllValue +' id="checkAll" name="disChk" class="'+randomID +'" webpartID="' +webpartID +'">ALL';
-   // MySchdule ”ñ•\¦(outlook):ALL checked ‘S•\¦
+   // MySchdule éè¡¨ç¤º(outlook):ALL checked å…¨è¡¨ç¤º
    /* if (strMySchedule !="1" )//|| !this.isLisenced)
    {
     checkAllhtml='<input type="checkbox" checked id="checkAll" name="disChk">ALL';
@@ -715,7 +715,7 @@ private ColorSet(randomID,CalendID){
 
        }
       html += '<input type="checkbox" name="disChk" id ="mycal-' +task.Title.replace(/\s+/g, "") +randomID+'" webpartID="' +webpartID +
-            '" class ="'+randomID +'"' +checkValue +'><font color="' +task.Color + '">¡</font>';
+            '" class ="'+randomID +'"' +checkValue +'><font color="' +task.Color + '">â– </font>';
       });
     
      const listContainer: Element = this.domElement.querySelector('#mycal-chk_color');
@@ -740,14 +740,14 @@ private ColorSet(randomID,CalendID){
      }
      // Click event
       //this._setButtonEventHandlers();
-    //ƒJƒŒƒ“ƒ_[
+    //ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼
     this.graphRenderList(CalendID,strMySchedule);
    }).fail(function(jqXHR, textStatus, errorThrown){
-    // ƒGƒ‰[‚Ìê‡ˆ—
-      //ƒJƒŒƒ“ƒ_[
+    // ã‚¨ãƒ©ãƒ¼ã®å ´åˆå‡¦ç†
+      //ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼
       
      // this.graphRenderList(CalendID);
-      //alert("ƒJƒeƒSƒŠ[‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢I");
+      //alert("ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼");
     
     
   });
