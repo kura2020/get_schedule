@@ -47,7 +47,13 @@ jobs:
           working_directory: ./get_schedule
       #- run: npm version
 
-      - run: sudo npm link gulp
+      - run: 
+          command: |
+            pwd
+            echo 'ls -l /home/circleci/project/node_modules'
+            ls -l /home/circleci/project/node_modules
+            sudo npm link gulp
+
       #- run: gulp -version
 
       # run gulp
@@ -79,9 +85,10 @@ jobs:
 
             echo 'ls -l /home/circleci/project/get_schedule'
             ls -l /home/circleci/project/get_schedule
-
-            echo 'ls -l /home/circleci/project/get_schedule/node_modules'
-            ls -l /home/circleci/project/get_schedule/node_modules
+            
+            # /home/circleci/project/get_schedule/node_modulesÇÕë∂ç›ÇπÇ∏
+            #echo 'ls -l /home/circleci/project/get_schedule/node_modules'
+            #ls -l /home/circleci/project/get_schedule/node_modules
 
             echo 'ls -l /home/circleci/project/node_modules'
             ls -l /home/circleci/project/node_modules
