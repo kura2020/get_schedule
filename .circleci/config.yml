@@ -13,7 +13,7 @@ jobs:
       - run: 
           command: |
             pwd
-            ls -t /home/cirlcrci/project
+            ls -t /home/circleci/project
             ls -l /usr/local
             ls -l /usr/local/lib
             npm install typescript@3.2.4
@@ -35,9 +35,9 @@ jobs:
       - run:
           command: |
             pwd
-            ls -t /home/cirlcrci/project/node_modules/gulp
-            ls -t /home/cirlcrci/project/node_modules
-            ls -t /home/cirlcrci/project
+            ls -t /home/circleci/project/node_modules/gulp
+            ls -t /home/circleci/project/node_modules
+            ls -t /home/circleci/project
             ls -l /usr/local
             ls -l /usr/local/lib
             ls -l /usr/local/lib/node_modules
@@ -75,9 +75,9 @@ jobs:
           command: |
             pwd
             npm config get prefix
-            ls -t /home/cirlcrci/project/node_modules/gulp
-            ls -t /home/cirlcrci/project/node_modules
-            ls -t /home/cirlcrci/project
+            ls -t /home/circleci/project/node_modules/gulp
+            ls -t /home/circleci/project/node_modules
+            ls -t /home/circleci/project
             ls -l /usr/local
             ls -l /usr/local/lib
             ls -l /usr/local/lib/node_modules
