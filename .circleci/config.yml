@@ -52,7 +52,7 @@ jobs:
             pwd
             echo 'ls -l /home/circleci/project/node_modules'
             ls -l /home/circleci/project/node_modules
-            sudo npm link gulp
+            # sudo npm link gulp
 
       #- run: gulp -version
 
