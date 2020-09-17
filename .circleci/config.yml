@@ -65,6 +65,7 @@ jobs:
       - run: 
           command: |
             pwd
+            npm config get prefix
             npm install selenium-side-runner
             sudo npm link selenium-side-runner
           working_directory: ./get_schedule
