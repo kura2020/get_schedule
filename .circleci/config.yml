@@ -129,10 +129,10 @@ workflows:
   main:
     jobs:
       - build:
-#          context: SonarCloud
-#          filters:
-#            branches:
-#              only: developer
+          context: SonarCloud
+          filters:
+            branches:
+              only: master
       - test:
           requires:
             - build
