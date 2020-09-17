@@ -34,8 +34,8 @@ jobs:
       - run:
           command: |
             pwd
-            echo 'ls -l /home/circleci/project/get_schedule/node_modules'
-            ls -l /home/circleci/project/get_schedule/node_modules
+            #echo 'ls -l /home/circleci/project/get_schedule/node_modules'
+            #ls -l /home/circleci/project/get_schedule/node_modules
 
             echo 'ls -l /home/circleci/project/node_modules'
             ls -l /home/circleci/project/node_modules
@@ -76,6 +76,12 @@ jobs:
           command: |
             pwd
             npm config get prefix
+
+            echo 'ls -l /home/circleci/project/get_schedule'
+            ls -l /home/circleci/project/get_schedule
+
+            echo 'ls -l /home/circleci/project/get_schedule/node_modules'
+            ls -l /home/circleci/project/get_schedule/node_modules
 
             echo 'ls -l /home/circleci/project/node_modules'
             ls -l /home/circleci/project/node_modules
