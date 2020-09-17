@@ -63,7 +63,7 @@ jobs:
       - run: 
           command: |
             pwd
-            gulp bundle --ship
+            ./gulp bundle --ship
             pwd
 
           #working_directory: ./get_schedule
@@ -71,9 +71,10 @@ jobs:
       - run: 
           command: |
             pwd
-            gulp package-solution --ship
+            ./gulp package-solution --ship
             pwd
           #working_directory: ./get_schedule
+          working_directory: ./node_modules
 
       - store_artifacts:
           path: ./sharepoint/solution/get-schedule.sppkg
