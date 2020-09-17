@@ -100,9 +100,9 @@ jobs:
             sudo npm link selenium-side-runner
           working_directory: ./get_schedule
 
-      #- run: 
-      #    command: |
-      #      selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars,headless]"  ./side/test1-siderunner.side --output-directory=./test-reports --output-format=junit
+      - run: 
+          command: |
+            selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars,headless]"  ./side/test1-siderunner.side --output-directory=./test-reports --output-format=junit
 
       # Selenuim-WebdriverÇÃé¿çs
       #- run: npm install selenium-webdriver
