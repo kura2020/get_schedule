@@ -67,7 +67,7 @@ jobs:
             pwd
             npm install selenium-side-runner
             sudo npm link selenium-side-runner
-          working_directory: ./test_schedule
+          working_directory: ./get_schedule
 
       #- run: 
       #    command: |
