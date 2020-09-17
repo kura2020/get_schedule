@@ -17,8 +17,6 @@ jobs:
             ls -l /home/circleci/project
             echo 'ls -lt /home/circleci/project/node_modules'
             ls -lt /home/circleci/project/node_modules
-            echo 'ls -lt /usr/local/lib/node_modules'
-            ls -l /usr/local/lib/node_modules
             npm install typescript@3.2.4
             pwd                         
           working_directory: ./get_schedule
