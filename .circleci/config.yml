@@ -52,7 +52,7 @@ jobs:
             pwd
             echo 'ls -l /home/circleci/project/node_modules'
             ls -l /home/circleci/project/node_modules
-#            sudo npm link gulp
+            sudo npm link gulp
 #          working_directory: ./get_schedule
 
       #- run: gulp -version
@@ -86,6 +86,8 @@ jobs:
           command: |
             pwd
             npm config get prefix
+
+            sudo npm unlink gulp
 
             echo 'ls -l /home/circleci/project/get_schedule'
             ls -l /home/circleci/project/get_schedule
