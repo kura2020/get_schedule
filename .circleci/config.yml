@@ -13,9 +13,12 @@ jobs:
       - run: 
           command: |
             pwd
-            ls -t /home/circleci/project
-            ls -l /usr/local
-            ls -l /usr/local/lib
+            echo 'ls -lt /home/circleci/project'
+            ls -l /home/circleci/project
+            echo 'ls -lt /home/circleci/project/node_modules'
+            ls -lt /home/circleci/project/node_modules
+            echo 'ls -lt /usr/local/lib/node_modules'
+            ls -l /usr/local/lib/node_modules
             npm install typescript@3.2.4
             pwd                         
           working_directory: ./get_schedule
@@ -35,11 +38,11 @@ jobs:
       - run:
           command: |
             pwd
-            ls -t /home/circleci/project/node_modules/gulp
-            ls -t /home/circleci/project/node_modules
-            ls -t /home/circleci/project
-            ls -l /usr/local
-            ls -l /usr/local/lib
+            echo 'ls -lt /home/circleci/project'
+            ls -l /home/circleci/project
+            echo 'ls -lt /home/circleci/project/node_modules'
+            ls -lt /home/circleci/project/node_modules
+            echo 'ls -lt /usr/local/lib/node_modules'
             ls -l /usr/local/lib/node_modules
             npm install
             pwd
@@ -75,12 +78,14 @@ jobs:
           command: |
             pwd
             npm config get prefix
-            ls -t /home/circleci/project/node_modules/gulp
-            ls -t /home/circleci/project/node_modules
-            ls -t /home/circleci/project
-            ls -l /usr/local
-            ls -l /usr/local/lib
+
+            echo 'ls -lt /home/circleci/project'
+            ls -l /home/circleci/project
+            echo 'ls -lt /home/circleci/project/node_modules'
+            ls -lt /home/circleci/project/node_modules
+            echo 'ls -lt /usr/local/lib/node_modules'
             ls -l /usr/local/lib/node_modules
+
             npm install selenium-side-runner
             sudo npm link selenium-side-runner
           working_directory: ./get_schedule
