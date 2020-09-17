@@ -48,10 +48,11 @@ jobs:
 
 
       # Selenuim-side runnerの実行
-      #- run: 
-      #    command: |
-      #      npm install selenium-side-runner
-      #      sudo npm link selenium-side-runner
+      - run: 
+          command: |
+            pwd
+            npm install selenium-side-runner
+            sudo npm link selenium-side-runner
       #- run: 
       #    command: |
       #      selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars,headless]"  ./side/test1-siderunner.side --output-directory=./test-reports --output-format=junit
@@ -87,18 +88,18 @@ jobs:
 #      - run:
 #          command: o365 spo app deploy --name get-schedule.sppkg
 
-  test:
-    docker: # Executor タイプです。他に machine、macOS という実行タイプを指定できます
-      - image: circleci/node:10-browsers # プライマリコンテナです。このなかでジョブコマンドが実行されます      
-    steps:
-      - checkout
+#  test:
+#    docker: # Executor タイプです。他に machine、macOS という実行タイプを指定できます
+#      - image: circleci/node:10-browsers # プライマリコンテナです。このなかでジョブコマンドが実行されます      
+#    steps:
+#      - checkout
 
       # 日本語フォントのインストール
-      - run:
-          name: Install Japanese font
-          command: |
-            sudo apt-get install fonts-migmix
-      - run: mkdir ./test-reports
+#      - run:
+#          name: Install Japanese font
+#          command: |
+#            sudo apt-get install fonts-migmix
+#      - run: mkdir ./test-reports
 
       # Selenuim-Webdriverの実行
 #      - run: npm install selenium-webdriver
@@ -118,13 +119,13 @@ jobs:
       #    command: |
       #      selenium-side-runner -c "browserName=chrome goog:chromeOptions.args=[disable-infobars,headless]"  ./side/test1-siderunner.side --output-directory=./test-reports --output-format=junit
       # テスト結果の保存
-      - store_test_results:
-          path: ./test-reports
-      - store_artifacts:
-          path: ./screenshot1.jpg
+#      - store_test_results:
+#          path: ./test-reports
+#      - store_artifacts:
+#          path: ./screenshot1.jpg
 
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.1
+#orbs:
+#  sonarcloud: sonarsource/sonarcloud@1.0.1
 workflows:
   main:
     jobs:
@@ -133,6 +134,6 @@ workflows:
           filters:
             branches:
               only: master
-      - test:
-          requires:
-            - build
+#      - test:
+#          requires:
+#            - build
