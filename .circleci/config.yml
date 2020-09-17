@@ -10,7 +10,12 @@ jobs:
 
 
 
-      - run: npm install typescript@3.2.4
+      - run: 
+          command: |
+            pwd
+            npm install typescript@3.2.4
+            pwd                         
+          working_directory: ./get_schedule
  #     - sonarcloud/scan
  #     - run:
  #         command: |
