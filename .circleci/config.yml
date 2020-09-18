@@ -87,7 +87,7 @@ jobs:
             pwd
             npm config get prefix
 
-#           sudo npm unlink gulp
+            # sudo npm unlink gulp
 
             echo 'ls -l /home/circleci/project/get_schedule'
             ls -l /home/circleci/project/get_schedule
